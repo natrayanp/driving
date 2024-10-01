@@ -2,9 +2,13 @@
 	import { goto } from '$app/navigation';
     import { session } from '$lib/authstore.js';
     import { logout } from '$lib/firebase.client';
+	import Headernav from '$lib/Headernav.svelte';
 
 	let loading: boolean = true;
 	let loggedIn: boolean = false;
+    let current = 'Dashboard';
+let myactive = 'bg-grey-600 flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-black hover:text-white border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6';
+let myinactive = 'flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-black hover:text-white border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">'
 
     console.log('inside dashboard'+loggedIn);
     
@@ -23,25 +27,137 @@
     async function logmeout() {
         await logout();
     }
+
+    function actives(lis: string){
+        current = lis;        
+        console.log(myactive);
+    }
+
   
+
 
 </script>
 
 
 
-    {#if loading}
+{#if loading}
 	<div>Loading...</div>
 {:else}
-	<div>
 
 
-		<div>
-			{#if loggedIn}
-				<button on:click={logmeout}>Logout</button>
-			{:else}
-				<a href="/login"> Login</a>
-			{/if}
-		</div>
-		<slot />
-	</div>
+<div class="flex flex-col h-lvh bg-red-100">
+    <div>
+    <Headernav />
+    </div>
+    <div class ="bg-green-300">
+
+        <div class="flex flex-row">
+
+     
+                
+ <!-- Sidebar -->
+ <div class="flex flex-col h-[calc(100vh_-_5rem)] top-18 left-0 w-14 hover:w-64 md:w-64 bg-white shadow-xl rounded-lg dark:bg-gray-900 h-full text-white transition-all duration-300 border-none z-10 sidebar ">
+
+    <div class="overflow-y-auto overflow-x-hidden flex flex-col justify-between flex-grow">
+ 
+ 
+ 
+        <div class="pt-4 pb-8">
+            <ul class="space-y-2">
+                <li>
+                    <a href="#" class='flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-black hover:text-white border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6' >
+                      <span class="inline-flex justify-center items-center ml-4">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                      </span>
+                      <span class="ml-2 text-m tracking-wide truncate">Dashboard</span>
+                      
+                        <span class="bg-sky-500 text-gray-100 font-bold px-2 py-0.5 text-xs rounded-lg ml-auto">1</span>                      
+                      
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="#" class="flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-black hover:text-white border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6 py-1.5 rounded">
+                      <span class="inline-flex justify-center items-center ml-4">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path>
+                        </svg>
+                      </span>
+                      <span class="ml-2 text-m tracking-wide truncate">Starred</span>
+                    </a>
+                  </li>
+
+
+                <li>
+                    <a class="hover:bg-gray-500 hover:bg-opacity-10 hover:text-blue-600 flex items-center text-gray-700 py-1.5 px-4 rounded space-x-2 cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <span>Snoozed</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="hover:bg-gray-500 hover:bg-opacity-10 hover:text-blue-600 flex items-center text-gray-700 py-1.5 px-4 rounded space-x-2 cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"></path>
+                        </svg>
+                        <span>Important</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="hover:bg-gray-500 hover:bg-opacity-10 hover:text-blue-600 flex items-center text-gray-700 py-1.5 px-4 rounded space-x-2 cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                        </svg>
+                        <span>Sent</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="hover:bg-gray-500 hover:bg-opacity-10 hover:text-blue-600 flex items-center justify-between text-gray-700 py-1.5 px-4 rounded space-x-2 cursor-pointer">
+                        <span class="flex items-center space-x-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                            </svg>
+                            <span>Drafts</span>
+                        </span>
+                        <span class="bg-sky-500 text-gray-100 font-bold px-2 py-0.5 text-xs rounded-lg">1</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="hover:bg-gray-500 hover:bg-opacity-10 hover:text-blue-600 flex items-center text-gray-700 py-1.5 px-4 rounded space-x-2 cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                        </svg>
+                        <span>Spam</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="hover:bg-gray-500 hover:bg-opacity-10 hover:text-blue-600 flex items-center text-gray-700 py-1.5 px-4 rounded space-x-2 cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                        </svg>
+                        <span>Trash</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+ 
+ 
+ 
+ 
+    </div>
+  </div>
+  <!-- ./Sidebar -->
+         
+
+
+            <div class ="grow bg-blue-300 p-6">
+                <slot />
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
 {/if}
