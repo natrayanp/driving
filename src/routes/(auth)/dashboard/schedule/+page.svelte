@@ -1,3 +1,21 @@
+<script lang="ts">
+	import { text } from "@sveltejs/kit";
+
+  	let questions = [
+		{ id: 1, text: `AM` },
+		{ id: 2, text: `PM` },		
+	];
+
+	let selected:Text;
+
+	let answer = '';
+
+	function handleSubmit() {
+		alert(`answered question ${selected.id} (${selected.text}) with "${answer}"`);
+	}
+</script>
+
+
 
 <div class="bg-white p-5 rounded-xl mb-24">
 <!-- component -->
@@ -82,10 +100,10 @@
           -->
 
           
-          <div class="absolute right-0 z-10 mt-3 w-36 origin-top-right divide-y divide-gray-100 overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-0-button" tabindex="-1">
-            <div class="py-1" role="none">
+        <!--nat  <div class="absolute right-0 z-10 mt-3 w-36 origin-top-right divide-y divide-gray-100 overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-0-button" tabindex="-1">
+            <div class="py-1" role="none">nat-->
               <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
-              <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-0-item-0">Create event</a>
+        <!--nat      <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-0-item-0">Create event</a>
             </div>
             <div class="py-1" role="none">
               <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-0-item-1">Go to today</a>
@@ -99,16 +117,78 @@
             </div>
           
           </div>
+        nat-->
           
         </div>
       </div>
     </header>
 
 
-<div>
-  
+<div class="flex flex-col xl:flex-row bg-red-100 xl:items-center mt-1 mb-1">
+  <div class="grow flex flex-col lg:flex-row lg:items-center	">
+    <div class ="bg-yellow-200 p-5 grow"> <!-- this is for date-->
+
+      <label for="time" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Date:</label>
+      <div class=" max-w-sm">
+        <input id="default-datepicker" type="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date">
+      </div>
 
 
+    </div>
+
+    
+    <div class="flex flex-row md:flex-row grow ">
+    
+
+      <!-- Start time-->
+      <div class ="bg-purple-200 p-5 grow">
+        <label for="time" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Start time:</label>
+        <div class="relative">
+            <div class="absolute inset-y-0 end-0 top-0 flex items-center pe-3.5 pointer-events-none">
+                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                    <path fill-rule="evenodd" d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm11-4a1 1 0 1 0-2 0v4a1 1 0 0 0 .293.707l3 3a1 1 0 0 0 1.414-1.414L13 11.586V8Z" clip-rule="evenodd"/>
+                </svg>
+            </div>
+            <input type="time" id="time" class="bg-gray-50 border leading-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" min="09:00" max="18:00" value="11:07" required />
+        </div>
+      </div>
+    <!-- Start time-->  
+
+
+      <!-- Start time-->
+      <div class ="bg-purple-200 p-5 grow">
+        <label for="time" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">End time:</label>
+        <div class="relative">
+            <div class="absolute inset-y-0 end-0 top-0 flex items-center pe-3.5 pointer-events-none">
+                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                    <path fill-rule="evenodd" d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm11-4a1 1 0 1 0-2 0v4a1 1 0 0 0 .293.707l3 3a1 1 0 0 0 1.414-1.414L13 11.586V8Z" clip-rule="evenodd"/>
+                </svg>
+            </div>
+            <input type="time" id="time" class="bg-gray-50 border leading-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" min="09:00" max="18:00" value="00:00" required />
+        </div>
+    </div>
+    <!-- Start time-->
+
+
+
+
+
+    </div>
+
+  </div>
+
+  <div class="grow p-5 flex justify-center lg:justify-end">    
+    <div class="inline-flex space-x-4">
+      <button class="bg-red-300 hover:bg-red-600 hover:text-white text-gray-800 text-sm font-semibold py-2 px-4 rounded">
+        Cancel
+      </button>
+      <button class="bg-blue-300 hover:bg-blue-700 hover:text-white text-gray-800 text-sm font-semibold py-2 px-4 rounded">
+        Submit
+      </button>
+    </div>
+  </div>
+
+<!--
   <div class="custom-number-input h-10 w-32">
     
     <label for="custom-input-number" class="w-full text-gray-700 text-sm font-semibold">Counter Input
@@ -124,13 +204,7 @@
   </div> 
 
 </div>
-
-
-
-
-
-
-
+-->
   
 </div>
 

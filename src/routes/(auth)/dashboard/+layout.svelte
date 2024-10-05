@@ -16,16 +16,15 @@ let myinactive = "flex flex-row items-center h-11 focus:outline-none hover:bg-bl
 
     const links = [
         { name: 'Dashboard', path: '/dashboard', count:1, svgpath:'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6'},
-        { name: 'Package', path: '/dashboard/package',count:0, svgpath:"M15 17C15 15.343 13.657 14 12 14M12 14C10.343 14 9 15.343 9 17C9 18.657 10.343 20 12 20C13.657 20 15 21.343 15 23C15 24.657 13.657 26 12 26M12 14V13M12 26C10.343 26 9 24.657 9 23M12 26V27M22 31H31V29M25 26H31V24M26 21H31V19M26 16H31V14M23 11H31V9M10 6H31V1H7V6M23 20C23 13.926 18.074 9 12 9C5.926 9 1 13.926 1 20C1 26.074 5.926 31 12 31C18.074 31 23 26.074 23 20Z"},
+        { name: 'Package', path: '/dashboard/package',count:0, svgpath:"M15 9a2 2 0 10-4 0v5a2 2 0 01-2 2h6m-6-4h4m8 0a9 9 0 11-18 0 9 9 0 0118 0z"},
         { name: 'Schedule', path: '/dashboard/schedule', count:null, svgpath: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"},
-        { name: 'Important', path: '/important', count:null, svgpath: "M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"},
+        { name: 'Myinfo', path: '/dashboard/myinfo', count:null, svgpath: "M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"},
         { name: 'Drafts', path: '/drafts', count:null, svgpath: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"},
         { name: 'Spam', path: '/spam', count:null, svgpath: "M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"},
         { name: 'Trash', path: '/trash', count:null, svgpath: "M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"},
     ];
+
     
-
-
 
     session.subscribe((cur: any) => {
         console.log('inside sub');
